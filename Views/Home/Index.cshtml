@@ -1,14 +1,64 @@
-﻿@using System.Security.Claims;
+﻿@using System.Security.Claims
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    @if(User.Identity!.IsAuthenticated){
-        <h1 class="display-4">Bienvenido
-            @User.Claims.Where(c=>c.Type == ClaimTypes.Name).Select(c=>c.Value).SingleOrDefault()
-        </h1>
-    }
-    
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center">
+        @if (User.Identity!.IsAuthenticated)
+        {
+            <h1 class="display-4">
+                Bienvenido,
+                @User.Claims.Where(c => c.Type == ClaimTypes.Name).Select(c => c.Value).SingleOrDefault()
+            </h1>
+            <p class="lead">Administra tus reservas de campos deportivos de manera rápida y eficiente.</p>
+        }
+        else
+        {
+            <h1 class="display-4">Bienvenido a nuestra plataforma</h1>
+            <p class="lead">Por favor, inicia sesión para acceder a todas las funcionalidades.</p>
+        }
+    </div>
+
+    <div class="row text-center mt-4">
+        @if (User.Identity!.IsAuthenticated)
+        {
+            <div class="col-md-4">
+                <a href="/Reservations" class="btn btn-primary btn-lg w-100">
+                    Gestionar Reservas
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Fields" class="btn btn-success btn-lg w-100">
+                    Administrar Campos
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Clients" class="btn btn-info btn-lg w-100">
+                    Gestión de Clientes
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12">
+                <a href="/Account/Login" class="btn btn-warning btn-lg w-50">
+                    Iniciar Sesión
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="mt-5 text-center">
+        <p>Conoce más sobre <a href="https://learn.microsoft.com/aspnet/core" target="_blank">ASP.NET Core</a>.</p>
+    </div>
 </div>
+
+<style>
+    .container {
+        max-width: 900px;
+    }
+    .btn {
+        margin-top: 15px;
+    }
+</style>
