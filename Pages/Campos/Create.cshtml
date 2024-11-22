@@ -1,0 +1,27 @@
+﻿@page
+@model SportField.Models.Campo
+@{
+    ViewData["Title"] = "Crear Nuevo Campo";
+}
+
+<h2>Crear Nuevo Campo</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Tipo">Tipo</label>
+        <input asp-for="Tipo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Ubicación">Ubicación</label>
+        <input asp-for="Ubicación" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="TarifaHora">Tarifa por Hora</label>
+        <input asp-for="TarifaHora" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-page="/Campos/Index" class="btn btn-secondary">Cancelar</a>
+</form>

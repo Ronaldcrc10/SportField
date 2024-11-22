@@ -1,0 +1,35 @@
+﻿@page
+@model List<SportField.Models.Cliente>
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h2>Lista de Clientes</h2>
+<a asp-page="/Clientes/Create" class="btn btn-primary">Crear Nuevo Cliente</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Apellido</td>
+                <td>@cliente.Teléfono</td>
+                <td>@cliente.Email</td>
+                <td>
+                    <a asp-page="/Clientes/Edit" asp-route-id="@cliente.IdCliente" class="btn btn-warning">Editar</a>
+                    <a asp-page="/Clientes/Details" asp-route-id="@cliente.IdCliente" class="btn btn-info">Detalles</a>
+                    <a asp-page="/Clientes/Delete" asp-route-id="@cliente.IdCliente" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
