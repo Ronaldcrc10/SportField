@@ -1,0 +1,39 @@
+﻿@page
+@model List<SportField.Models.Evento>
+@{
+    ViewData["Title"] = "Lista de Eventos";
+}
+
+<h2>Lista de Eventos</h2>
+<a asp-page="/Eventos/Create" class="btn btn-primary">Crear Nuevo Evento</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre del Evento</th>
+            <th>Campo</th>
+            <th>Fecha</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var evento in Model)
+        {
+            <tr>
+                <td>@evento.NombreEvento</td>
+                
+                <td>@evento.FechaEvento.ToShortDateString()</td>
+                <td>@evento.HoraInicio</td>
+                <td>@evento.HoraFin</td>
+                <td>@evento.Descripción</td>
+                <td>
+                    <a asp-page="/Eventos/Edit" asp-route-id="@evento.IdEvento" class="btn btn-warning">Editar</a>
+                    <a asp-page="/Eventos/Details" asp-route-id="@evento.IdEvento" class="btn btn-info">Detalles</a>
+                    <a asp-page="/Eventos/Delete" asp-route-id="@evento.IdEvento" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

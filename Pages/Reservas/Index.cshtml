@@ -1,0 +1,37 @@
+﻿@page
+@model List<SportField.Models.Reserva>
+@{
+    ViewData["Title"] = "Lista de Reservas";
+}
+
+<h2>Lista de Reservas</h2>
+<a asp-page="/Reservas/Create" class="btn btn-primary">Crear Nueva Reserva</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Campo</th>
+            <th>Cliente</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reserva in Model)
+        {
+            <tr>
+                <td>@reserva.IdCampo</td>
+                <td>@reserva.IdCliente</td>
+                <td>@reserva.FechaHoraInicio</td>
+                <td>@reserva.FechaHoraFin</td>
+                <td>@reserva.Estado</td>
+                <td>
+                    <a asp-page="/Reservas/Edit" asp-route-id="@reserva.IdReserva" class="btn btn-warning">Editar</a>
+                    <a asp-page="/Reservas/Details" asp-route-id="@reserva.IdReserva" class="btn btn-info">Detalles</a>
+                    <a asp-page="/Reservas/Delete" asp-route-id="@reserva.IdReserva" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

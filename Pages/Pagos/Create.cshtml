@@ -1,0 +1,32 @@
+﻿@page
+@model SportField.Models.Pago
+@{
+    ViewData["Title"] = "Registrar Nuevo Pago";
+}
+
+<h2>Registrar Nuevo Pago</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="IdReserva">Reserva</label>
+        <select asp-for="IdReserva" asp-items="Model.Reservas" class="form-control">
+            <option value="">Selecciona una reserva</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Monto">Monto</label>
+        <input asp-for="Monto" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="FechaPago">Fecha de Pago</label>
+        <input asp-for="FechaPago" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="MétodoPago">Método de Pago</label>
+        <select asp-for="MétodoPago" class="form-control">
+            <option value="Tarjeta">Tarjeta</option>
+            <option value="Efectivo">Efectivo</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-page="/Pagos/Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,35 @@
+﻿@page
+@model List<SportField.Models.Pago>
+@{
+    ViewData["Title"] = "Lista de Pagos";
+}
+
+<h2>Lista de Pagos</h2>
+<a asp-page="/Pagos/Create" class="btn btn-primary">Registrar Nuevo Pago</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Reserva</th>
+            <th>Monto</th>
+            <th>Fecha de Pago</th>
+            <th>Método de Pago</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pago in Model)
+        {
+            <tr>
+                <td>@pago.Reserva.IdReserva</td>
+                <td>@pago.Monto</td>
+                <td>@pago.FechaPago.ToShortDateString()</td>
+                <td>@pago.MétodoPago</td>
+                <td>
+                    <a asp-page="/Pagos/Edit" asp-route-id="@pago.IdPago" class="btn btn-warning">Editar</a>
+                    <a asp-page="/Pagos/Details" asp-route-id="@pago.IdPago" class="btn btn-info">Detalles</a>
+                    <a asp-page="/Pagos/Delete" asp-route-id="@pago.IdPago" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
